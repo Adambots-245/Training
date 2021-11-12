@@ -1,1 +1,1 @@
-# Training
+# Training materials for Adambots team
