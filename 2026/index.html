@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rookie Bootcamp 2026</title>
+<link rel="stylesheet" href="../brand/fonts/fonts.css">
+<style>
+:root{--gold:#FFD800;--charcoal:#252525;--night:#1A1A1A;--ink:#111;--fog:#C9C9C9}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--charcoal) url('../brand/assets/texture_noise.png');color:#fff;font:400 18px/1.5 'Roboto','Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:980px;margin:0 auto;padding:48px 16px 64px}
+header{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border-bottom:6px solid var(--gold);padding-bottom:22px;margin-bottom:34px}
+header img{height:64px}
+.eyebrow{font:700 14px/1 'Roboto Condensed','Roboto',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+h1{font:800 clamp(34px,6vw,56px)/1.05 'Montserrat',sans-serif;margin:10px 0 0}
+h1 span{color:var(--gold)}
+p.lead{color:var(--fog);font-size:19px;margin:12px 0 0;max-width:680px}
+.cards{display:grid;gap:18px;margin-top:30px}
+.card{background:var(--night);border-radius:8px;box-shadow:0 0 10px #000;padding:24px 26px;display:grid;grid-template-columns:auto 1fr;gap:6px 22px;align-items:start;border-left:8px solid var(--gold)}
+.num{grid-row:span 3;font:italic 900 64px/.9 'Saira','Montserrat',sans-serif;color:var(--gold)}
+.card h2{margin:0;font:800 26px/1.2 'Montserrat',sans-serif}
+.card p{margin:0;color:var(--fog)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
+a.btn{display:inline-block;text-decoration:none;font:800 16px/1 'Montserrat',sans-serif;padding:14px 18px;border-radius:6px;background:var(--gold);color:var(--ink)}
+a.btn.ghost{background:transparent;color:#fff;border:2px solid #fff}
+a.btn:hover{filter:brightness(1.08)}
+.tip{margin-top:34px;background:var(--night);border-radius:8px;padding:18px 22px;color:var(--fog);font-size:16px}
+.tip b{color:#fff} kbd{background:#333;border-radius:4px;padding:1px 7px;font:600 14px/1.4 'JetBrains Mono',monospace;color:#fff}
+footer{margin-top:40px;color:#888;font-size:14px}
+@media (max-width:560px){.card{grid-template-columns:1fr}.num{grid-row:auto}}
+</style></head><body><div class="wrap">
+<header><div><div class="eyebrow">AdamBots · Team 245</div><h1>Rookie Bootcamp <span>2026</span></h1></div><img src="../brand/assets/logo_darkBG_medium.png" alt="AdamBots Team 245"></header>
+<p class="lead">Programming track. Open a deck to follow along in class or review at home. Exercises go in <b style="color:#fff">C:\bootcamp</b> (not in Documents or OneDrive).</p>
+<div class="cards">
+  <div class="card"><div class="num">1</div><h2>How Computers Think</h2><p>Switches, binary, logic gates, data, programs and languages. Ends with installing WPILib before Session 2.</p><div class="btns"><a class="btn" href="01-how-computers-think/">Open deck</a></div></div>
+  <div class="card"><div class="num">2</div><h2>Intro to Java</h2><p>How Java runs, program structure, variables and types, operators, if/else, loops and methods.</p><div class="btns"><a class="btn" href="02-intro-to-java/">Open deck</a><a class="btn ghost" href="02-intro-to-java/session2-exercises.zip" download>Download exercises (.zip)</a></div></div>
+</div>
+<div class="tip"><b>Using a deck:</b> <kbd>→</kbd> or <kbd>Space</kbd> next · <kbd>←</kbd> back · <kbd>T</kbd> contents · <kbd>F</kbd> fullscreen · <kbd>?</kbd> all keys. <b>Exercises:</b> unzip into <b>C:\bootcamp</b>, then open that folder in WPILib VS Code.</div>
+<footer>AdamBots Team 245 · adambots.com</footer>
+</div></body></html>
