@@ -22,6 +22,13 @@ p.lead{color:var(--fog);font-size:19px;margin:12px 0 0;max-width:680px}
 a.btn{display:inline-block;text-decoration:none;font:800 16px/1 'Montserrat',sans-serif;padding:14px 18px;border-radius:6px;background:var(--gold);color:var(--ink)}
 a.btn.ghost{background:transparent;color:#fff;border:2px solid #fff}
 a.btn:hover{filter:brightness(1.08)}
+.book{margin:-6px 0 0 34px;background:var(--night);border-radius:0 0 8px 8px;padding:16px 22px 18px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;border-left:4px solid #555}
+.book .ic{font-size:30px;line-height:1}
+.book div{flex:1;min-width:220px}
+.book b{display:block;font:800 18px/1.3 'Montserrat',sans-serif}
+.book span{color:var(--fog);font-size:15px}
+.book a.btn{padding:11px 14px;font-size:14px}
+@media (max-width:560px){.book{margin-left:0}}
 .tip{margin-top:34px;background:var(--night);border-radius:8px;padding:18px 22px;color:var(--fog);font-size:16px}
 .tip b{color:#fff} kbd{background:#333;border-radius:4px;padding:1px 7px;font:600 14px/1.4 'JetBrains Mono',monospace;color:#fff}
 footer{margin-top:40px;color:#888;font-size:14px}
@@ -31,7 +38,8 @@ footer{margin-top:40px;color:#888;font-size:14px}
 <p class="lead">Programming track. Open a deck to follow along in class or review at home. Exercises go in <b style="color:#fff">C:\bootcamp</b> (not in Documents or OneDrive).</p>
 <div class="cards">
   <div class="card"><div class="num">1</div><h2>How Computers Think</h2><p>Switches, binary, logic gates, data, programs and languages. Ends with installing WPILib before Session 2.</p><div class="btns"><a class="btn" href="01-how-computers-think/">Open deck</a></div></div>
-  <div class="card"><div class="num">2</div><h2>Intro to Java</h2><p>How Java runs, program structure, variables and types, operators, if/else, loops and methods.</p><div class="btns"><a class="btn" href="02-intro-to-java/">Open deck</a><a class="btn ghost" href="02-intro-to-java/session2-exercises.zip" download>Download exercises (.zip)</a></div></div>
+  <div class="card"><div class="num">2</div><h2>Intro to Java</h2><p>How Java runs, program structure, variables and types, operators, if/else, loops and methods.</p><div class="btns"><a class="btn" href="02-intro-to-java/">Open deck</a><a class="btn ghost" href="02-intro-to-java/session2-exercises.zip" download>Download exercises (.zip)</a><a class="btn ghost" href="02-intro-to-java/session2-solutions.zip" download>Download solutions (.zip)</a></div></div>
+  <div class="book"><span class="ic">📘</span><div><b>Free textbook: Introduction to Programming Using Java</b><span>by David J. Eck · read online or download, free from the Open Textbook Library. Great for going further at home.</span></div><a class="btn ghost" href="https://open.umn.edu/opentextbooks/textbooks/introduction-to-programming-using-java-seventh-edition" target="_blank" rel="noopener">Open the book ↗</a></div>
 </div>
 <div class="tip"><b>Using a deck:</b> <kbd>→</kbd> or <kbd>Space</kbd> next · <kbd>←</kbd> back · <kbd>T</kbd> contents · <kbd>F</kbd> fullscreen · <kbd>?</kbd> all keys. <b>Exercises:</b> unzip into <b>C:\bootcamp</b>, then open that folder in WPILib VS Code.</div>
 <footer>AdamBots Team 245 · adambots.com</footer>
