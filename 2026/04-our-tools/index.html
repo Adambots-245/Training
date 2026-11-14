@@ -1407,10 +1407,10 @@ public void run() {
         <button class="ex-row later" style="--l:0" data-k="gradlelater">📄 gradlew</button>
         <button class="ex-row later" style="--l:0" data-k="gradlelater">🐘 settings.gradle</button>
       </div>
-      <div class="ex-info"><div class="ex-name">Click a file</div><p class="ex-what">Some of these you'll edit every day. The grey ones belong to Gradle, the tool that builds our code: we open those up in section 6.</p><div class="ex-uses"></div></div>
+      <div class="ex-info"><div class="ex-name">Click a file</div><p class="ex-what">Some of these you'll edit every day. The grey ones belong to Gradle, the tool that builds our code: we open those up in section 7.</p><div class="ex-uses"></div></div>
     </div>
   </div>
-  <aside class="notes"><p>The folder students live in: src/main/java/first/robot (all our code). The grey rows are Gradle's files; don't explain them yet, they get their own slide right after the Gradle kitchen in section 6. vendordeps is also covered in section 6. Our team number lives in .wpilib/wpilib_preferences.json; that's how Deploy knows which robot to talk to.</p></aside>
+  <aside class="notes"><p>The folder students live in: src/main/java/first/robot (all our code). The grey rows are Gradle's files; don't explain them yet, they get their own slide right after the Gradle kitchen in section 7. vendordeps is also covered in section 7. Our team number lives in .wpilib/wpilib_preferences.json; that's how Deploy knows which robot to talk to.</p></aside>
 </section>
 
 <section class="slide t-paper" data-title="Our project habits">
@@ -1728,20 +1728,131 @@ public void run() {
           <li>Click <b>Publish Branch</b></li>
         </ol></div>
       <div style="width:560px;flex:none;display:flex;flex-direction:column;gap:24px">
-        <div class="callout note" style="font-size:24px"><span class="lbl">★ Why one file each?</span>Everyone adds a <b>different</b> file, so nobody collides. Collisions come later today.</div>
+        <div class="callout note" style="font-size:24px"><span class="lbl">★ Why one file each?</span>Everyone adds a <b>different</b> file, so nobody collides. Collisions are next.</div>
         <div class="callout concept" style="font-size:24px"><span class="lbl">◆ First time?</span>VS Code asks you to sign in to GitHub in the browser. Say yes.</div>
         <div class="term" style="font-size:22px"><div class="bar"><i></i><i></i><i></i>&nbsp; roster/maya.md</div><pre><span class="o"># Maya</span>
 <span class="o">Favorite part: the intake</span></pre></div>
       </div>
     </div>
   </div>
-  <aside class="notes"><p>This is the students' first real clone (the scavenger hunt used a throwaway zip). Freshly cloned means they are already up to date with main, so no Sync is needed yet. Students keep this clone open: the next section builds and simulates it. Mentor: on the projector, open github.com/Adambots-245/Sandbox and the branches list; refresh as each branch arrives. First publish will ask students to sign in to GitHub in the browser: that's expected. Anyone not yet in the Adambots-245 organization can't push; pair them with someone who is and add them after the session.</p></aside>
+  <aside class="notes"><p>This is the students' first real clone (the scavenger hunt used a throwaway zip). Freshly cloned means they are already up to date with main, so no Sync is needed yet. Students keep this clone open: the conflict practice and the build-and-simulate Try-it both use it. Mentor: on the projector, open github.com/Adambots-245/Sandbox and the branches list; refresh as each branch arrives. First publish will ask students to sign in to GitHub in the browser: that's expected. Anyone not yet in the Adambots-245 organization can't push; pair them with someone who is and add them after the session.</p></aside>
 </section>
 
-<!-- ================= 6 · BUILD, SIMULATE, DEPLOY ================= -->
-<section class="slide t-gold divider" data-section="Build, simulate, deploy" data-title="Section 6">
+<!-- ================= 6 · MERGE CONFLICTS ================= -->
+<section class="slide t-gold divider" data-section="Merge conflicts" data-title="Section 6">
   <div class="atom wm" data-color="#111"></div>
-  <div class="pad center"><div class="num enter">06</div><h2 class="h1 enter" style="--d:.15s">Build, simulate, deploy</h2></div>
+  <div class="pad center"><div class="num enter">06</div><h2 class="h1 enter" style="--d:.15s">Merge conflicts</h2></div>
+  <div class="pipe7 big enter" style="--d:.3s" data-lit="0,1,2" data-now="2"></div>
+</section>
+
+<section class="slide t-dark" data-title="Two people, one line">
+  <div class="pad">
+    <div class="eyebrow">What a conflict is</div>
+    <h2 class="h1">When two people change the same line</h2>
+    <div class="cfa mt3">
+      <div class="cfa-start"><span class="cfa-tag">main</span><code>kIntakeSpeed = <b>0.5</b>;</code></div>
+      <div class="cfa-lanes">
+        <div class="cfa-lane ana step" data-step="1"><div class="cfa-who"><span class="av">A</span>Ana · <code>ana-intake</code></div><code>kIntakeSpeed = <s>0.5</s> <b>0.8</b>;</code></div>
+        <div class="cfa-lane ben step" data-step="2"><div class="cfa-who"><span class="av">B</span>Ben · <code>ben-intake-speed</code></div><code>kIntakeSpeed = <s>0.5</s> <b>0.6</b>;</code></div>
+      </div>
+      <div class="cfa-res">
+        <div class="cfa-step ok step" data-step="3"><b>✓</b><span>Ana merges first. <code>main</code> now says <b>0.8</b>.</span></div>
+        <div class="cfa-step bad step" data-step="4"><b>!</b><span>Ben merges next. Git sees 0.8 <i>and</i> 0.6 on the same line and <b>refuses to guess</b>.</span></div>
+      </div>
+    </div>
+    <div class="moral mt3 step" data-step="5">That's a merge conflict. It's normal, and a person decides.</div>
+  </div>
+  <aside class="notes"><p>Git merges different lines (or different files) automatically. Only when the same lines changed differently on both sides does it stop and ask. It's not an error and nothing is broken; it's Git being careful.</p></aside>
+</section>
+
+<section class="slide t-dark" data-title="Reading a conflict">
+  <div class="pad" style="top:70px">
+    <div class="eyebrow">Click through the markers</div>
+    <h2 class="h1" style="font-size:62px">Reading a conflict</h2>
+    <div class="row mt2" style="gap:40px;align-items:flex-start">
+      <div class="grow" style="display:flex;flex-direction:column;gap:16px">
+<pre class="code java" id="cmark" style="font-size:27px">
+<<<<<<< HEAD
+public static final double kIntakeSpeed = 0.8;
+=======
+public static final double kIntakeSpeed = 0.6;
+>>>>>>> ben-intake-speed
+</pre>
+        <div class="pin step" data-hl="cmark:1,2"><span class="lnum">TOP</span><span><b>Current:</b> what's already there (Ana's 0.8).</span></div>
+        <div class="pin step" data-hl="cmark:3"><span class="lnum">MIDDLE</span><span>The <b>=======</b> line divides the two versions.</span></div>
+        <div class="pin step" data-hl="cmark:4,5"><span class="lnum">BOTTOM</span><span><b>Incoming:</b> the change being merged in (Ben's 0.6).</span></div>
+        <div class="pin step" data-hl="cmark:"><span class="lnum">FIX</span><span>Click <b>Accept Current</b>, <b>Accept Incoming</b> or <b>Accept Both</b>. Or edit by hand: keep the right line and delete all three marker lines.</span></div>
+      </div>
+      <div class="shot step" style="width:760px;flex:none" data-lightbox="img/vscode-merge-conflict.png" data-caption="<b>A merge conflict in VS Code</b><small>Visual Studio Code documentation</small>"><img src="img/vscode-merge-conflict.png" alt="A merge conflict in VS Code with Accept buttons"></div>
+    </div>
+  </div>
+  <div class="credit">Screenshot: Visual Studio Code documentation · click to zoom</div>
+  <aside class="notes"><p>HEAD means "where you are now". The marker lines are not Java: if even one is left behind, the file won't compile. After fixing, stage the file and commit; VS Code fills in a merge message for you.</p></aside>
+</section>
+
+<section class="slide t-dark" id="resolver" data-title="Resolve the conflicts">
+  <div class="pad" style="top:64px">
+    <div class="eyebrow">Interactive · pick a fix for each conflict</div>
+    <h2 class="h1" style="font-size:58px">You decide: three conflicts in <code class="ic">Constants.java</code></h2>
+    <div class="resolver ix mt2">
+      <div class="rs-list"></div>
+      <div class="rs-out"><div class="code-head"><span>Constants.java · result</span><span class="rs-status"></span></div><pre class="code rs-file"></pre></div>
+    </div>
+  </div>
+  <aside class="notes"><p>Leave one unresolved first to show the red markers. Conflict 1: either number compiles, but Both defines the same name twice. Conflict 2: Ben renamed the constant; Both compiles but leaves two names for one number. Conflict 3: Ana and Ben each added a different motor, so Both is right and picking one deletes a teammate's work. Lesson: talk to your teammate, then decide.</p></aside>
+</section>
+
+<section class="slide t-paper" data-title="Avoiding conflicts">
+  <div class="pad">
+    <div class="eyebrow">Fewer conflicts</div>
+    <h2 class="h1">How to avoid most conflicts</h2>
+    <div class="habits mt3">
+      <div class="habit step"><b>1</b><div><h3>Pull often</h3><p>Start every work session with Sync on <code>main</code>.</p></div></div>
+      <div class="habit step"><b>2</b><div><h3>Small, short branches</h3><p>A day or two of work, then a pull request.</p></div></div>
+      <div class="habit step"><b>3</b><div><h3>One person per file</h3><p>When you can. Split big jobs by mechanism.</p></div></div>
+      <div class="habit step"><b>4</b><div><h3>Say what you're working on</h3><p>Tell the team before you start. Two people fixing the same bug is a conflict waiting to happen.</p></div></div>
+    </div>
+  </div>
+  <aside class="notes"><p>Conflicts still happen and that's fine. These habits just make them small and rare.</p></aside>
+</section>
+
+<section class="slide t-green try" data-title="Try it: make and fix a conflict">
+  <div class="pad">
+    <div class="eyebrow">▶ Try it · 8 min · pairs, two laptops <span class="timer" data-sec="480"></span></div>
+    <h2 class="h1">Make a conflict, then fix it</h2>
+    <div class="row mt3" style="gap:36px;align-items:flex-start">
+      <div class="card grow"><h3>Partner A and Partner B, each on your own laptop:</h3>
+        <ol class="hunt">
+          <li><b>A:</b> from <code>main</code>, create branch <code>pair-N</code> and <b>Publish Branch</b></li>
+          <li><b>B:</b> Sync, click the branch name, pick <code>origin/pair-N</code></li>
+          <li><b>Both:</b> change <code>kIntakeSpeed</code> in <code>Constants.java</code> to <b>different</b> values, then commit</li>
+          <li><b>A:</b> Sync first</li>
+          <li><b>B:</b> Sync. Conflict! Use the Accept buttons, save, stage, commit, Sync</li>
+          <li><b>Swap roles</b> with <code>kShooterSpeed</code></li>
+        </ol></div>
+      <div style="width:560px;flex:none;display:flex;flex-direction:column;gap:24px">
+        <div class="callout note" style="font-size:24px"><span class="lbl">★ Pair up first</span>Find a partner and get your pair number <b>N</b> from the board. Decide who is <b>A</b> and who is <b>B</b>. Each of you opens your own Sandbox clone. Sharing a laptop? Team up with another pair: one laptop is A, the other is B.</div>
+        <div class="callout concept" style="font-size:22px"><span class="lbl">◆ No pull request</span>This branch is just for practice. We never merge it into <code>main</code>.</div>
+        <div class="callout concept" style="font-size:24px"><span class="lbl">◆ Stuck?</span>Read <code>CONFLICT-PRACTICE.md</code> in the Sandbox. It has these steps with pictures.</div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><p>Before starting the timer, have everyone pair up and write the pair numbers on the whiteboard (pair-1, pair-2 and so on). A conflict needs two separate clones, so each partner needs their own laptop; students who shared a laptop on the earlier Try-its join up with another pair, one laptop as A and one as B. When B syncs, VS Code pulls A's commit and shows the conflict in Constants.java with the Accept buttons. After resolving: save, stage with +, commit (the message is filled in), Sync. If someone's Sync says "Merge" options, choose the default.</p></aside>
+</section>
+
+<section class="slide t-gold break-slide" data-title="Break 2" data-nofoot>
+  <div class="pad center" style="align-items:center;text-align:center">
+    <div class="eyebrow">Break</div>
+    <h2 class="disp" style="font-size:150px">Recharge!</h2>
+    <div class="mt3"><span class="timer" data-sec="600" style="font-size:80px"></span></div>
+    <p class="lead mt3">Back in 10 minutes. Next: build, simulate, deploy.</p>
+  </div>
+</section>
+
+<!-- ================= 7 · BUILD, SIMULATE, DEPLOY ================= -->
+<section class="slide t-gold divider" data-section="Build, simulate, deploy" data-title="Section 7">
+  <div class="atom wm" data-color="#111"></div>
+  <div class="pad center"><div class="num enter">07</div><h2 class="h1 enter" style="--d:.15s">Build, simulate, deploy</h2></div>
   <div class="pipe7 big enter" style="--d:.3s" data-lit="0,1,2,3,4,5" data-now="3" data-wave></div>
 </section>
 
@@ -1876,6 +1987,7 @@ public void run() {
     <div class="row mt3" style="gap:36px;align-items:flex-start">
       <div class="card grow"><h3>In your Sandbox clone:</h3>
         <ol class="hunt">
+          <li>Switch to <b>main</b>: click the branch name (bottom-left) → <b>main</b></li>
           <li>WPILib menu → <b>Build Robot Code</b>. The last line should say <code>BUILD SUCCESSFUL</code></li>
           <li>WPILib menu → <b>Simulate Robot Code</b> → <b>Sim GUI</b></li>
           <li>Robot State: <b>Teleoperated</b> → pick <b>Driver Control</b> → <b>Enable</b></li>
@@ -1892,7 +2004,7 @@ public void run() {
       </div>
     </div>
   </div>
-  <aside class="notes"><p>Students build the clone they just made. The first build of a fresh clone must be online: it downloads WPILib and the Commands v3 library, so allow a minute or two. No code changes here: the conflict practice later expects a clean Constants.java. If the build fails with a "cannot find symbol" error, they opened the scavenger-hunt zip instead of the clone.</p><p>P is the right bumper (intake), Q the left bumper (shooter). Closing the simulation window can rewrite simgui-ds.json; if it shows up under Changes in Source Control, right-click it and choose Discard Changes.</p></aside>
+  <aside class="notes"><p>Students build the clone they made in the Git section. They switch back to main first, because their pair branch from the conflict practice has different speeds and the console would not match. The first build of a fresh clone must be online: it downloads WPILib and the Commands v3 library, so allow a minute or two. No code changes here. If the build fails with a "cannot find symbol" error, they opened the scavenger-hunt zip instead of the clone.</p><p>P is the right bumper (intake), Q the left bumper (shooter). Closing the simulation window can rewrite simgui-ds.json; if it shows up under Changes in Source Control, right-click it and choose Discard Changes.</p></aside>
 </section>
 
 <section class="slide t-dark story" data-title="Story: a deploy across 190 million km">
@@ -1961,117 +2073,6 @@ public void run() {
   </div>
   <aside class="notes"><p>Mentor demo on the projector with the bench SystemCore. Each click lights the stops on the map. Students call out "Build!", "Test!", "Deploy!". Save and Share are already lit from the Git sections; Drive comes in section 8. Students did steps 1 and 2 themselves on the last Try-it, so move quickly through those.</p>
   <p>Step 2: in the simulation window click Teleoperated, pick Driver Control, Enable, then click inside the window and hold P. Step 4: the message is the System.out.println in the Intake constructor (for example, change it to "Intake ready, go AdamBots!"). It prints when the robot program starts, so the robot never needs to be enabled in this demo. The SystemCore needs image 14 or later for WPILib 2027 Alpha 8 code.</p></aside>
-</section>
-
-<section class="slide t-gold break-slide" data-title="Break 2" data-nofoot>
-  <div class="pad center" style="align-items:center;text-align:center">
-    <div class="eyebrow">Break</div>
-    <h2 class="disp" style="font-size:150px">Recharge!</h2>
-    <div class="mt3"><span class="timer" data-sec="600" style="font-size:80px"></span></div>
-    <p class="lead mt3">Back in 10 minutes. Next: what happens when two people change the same line.</p>
-  </div>
-</section>
-
-<!-- ================= 7 · MERGE CONFLICTS ================= -->
-<section class="slide t-gold divider" data-section="Merge conflicts" data-title="Section 7">
-  <div class="atom wm" data-color="#111"></div>
-  <div class="pad center"><div class="num enter">07</div><h2 class="h1 enter" style="--d:.15s">Merge conflicts</h2></div>
-  <div class="pipe7 big enter" style="--d:.3s" data-lit="0,1,2,3,4,5" data-now="2"></div>
-</section>
-
-<section class="slide t-dark" data-title="Two people, one line">
-  <div class="pad">
-    <div class="eyebrow">What a conflict is</div>
-    <h2 class="h1">When two people change the same line</h2>
-    <div class="cfa mt3">
-      <div class="cfa-start"><span class="cfa-tag">main</span><code>kIntakeSpeed = <b>0.5</b>;</code></div>
-      <div class="cfa-lanes">
-        <div class="cfa-lane ana step" data-step="1"><div class="cfa-who"><span class="av">A</span>Ana · <code>ana-intake</code></div><code>kIntakeSpeed = <s>0.5</s> <b>0.8</b>;</code></div>
-        <div class="cfa-lane ben step" data-step="2"><div class="cfa-who"><span class="av">B</span>Ben · <code>ben-intake-speed</code></div><code>kIntakeSpeed = <s>0.5</s> <b>0.6</b>;</code></div>
-      </div>
-      <div class="cfa-res">
-        <div class="cfa-step ok step" data-step="3"><b>✓</b><span>Ana merges first. <code>main</code> now says <b>0.8</b>.</span></div>
-        <div class="cfa-step bad step" data-step="4"><b>!</b><span>Ben merges next. Git sees 0.8 <i>and</i> 0.6 on the same line and <b>refuses to guess</b>.</span></div>
-      </div>
-    </div>
-    <div class="moral mt3 step" data-step="5">That's a merge conflict. It's normal, and a person decides.</div>
-  </div>
-  <aside class="notes"><p>Git merges different lines (or different files) automatically. Only when the same lines changed differently on both sides does it stop and ask. It's not an error and nothing is broken; it's Git being careful.</p></aside>
-</section>
-
-<section class="slide t-dark" data-title="Reading a conflict">
-  <div class="pad" style="top:70px">
-    <div class="eyebrow">Click through the markers</div>
-    <h2 class="h1" style="font-size:62px">Reading a conflict</h2>
-    <div class="row mt2" style="gap:40px;align-items:flex-start">
-      <div class="grow" style="display:flex;flex-direction:column;gap:16px">
-<pre class="code java" id="cmark" style="font-size:27px">
-<<<<<<< HEAD
-public static final double kIntakeSpeed = 0.8;
-=======
-public static final double kIntakeSpeed = 0.6;
->>>>>>> ben-intake-speed
-</pre>
-        <div class="pin step" data-hl="cmark:1,2"><span class="lnum">TOP</span><span><b>Current:</b> what's already there (Ana's 0.8).</span></div>
-        <div class="pin step" data-hl="cmark:3"><span class="lnum">MIDDLE</span><span>The <b>=======</b> line divides the two versions.</span></div>
-        <div class="pin step" data-hl="cmark:4,5"><span class="lnum">BOTTOM</span><span><b>Incoming:</b> the change being merged in (Ben's 0.6).</span></div>
-        <div class="pin step" data-hl="cmark:"><span class="lnum">FIX</span><span>Click <b>Accept Current</b>, <b>Accept Incoming</b> or <b>Accept Both</b>. Or edit by hand: keep the right line and delete all three marker lines.</span></div>
-      </div>
-      <div class="shot step" style="width:760px;flex:none" data-lightbox="img/vscode-merge-conflict.png" data-caption="<b>A merge conflict in VS Code</b><small>Visual Studio Code documentation</small>"><img src="img/vscode-merge-conflict.png" alt="A merge conflict in VS Code with Accept buttons"></div>
-    </div>
-  </div>
-  <div class="credit">Screenshot: Visual Studio Code documentation · click to zoom</div>
-  <aside class="notes"><p>HEAD means "where you are now". The marker lines are not Java: if even one is left behind, the file won't compile. After fixing, stage the file and commit; VS Code fills in a merge message for you.</p></aside>
-</section>
-
-<section class="slide t-dark" id="resolver" data-title="Resolve the conflicts">
-  <div class="pad" style="top:64px">
-    <div class="eyebrow">Interactive · pick a fix for each conflict</div>
-    <h2 class="h1" style="font-size:58px">You decide: three conflicts in <code class="ic">Constants.java</code></h2>
-    <div class="resolver ix mt2">
-      <div class="rs-list"></div>
-      <div class="rs-out"><div class="code-head"><span>Constants.java · result</span><span class="rs-status"></span></div><pre class="code rs-file"></pre></div>
-    </div>
-  </div>
-  <aside class="notes"><p>Leave one unresolved first to show the red markers. Conflict 1: either number compiles, but Both defines the same name twice. Conflict 2: Ben renamed the constant; Both compiles but leaves two names for one number. Conflict 3: Ana and Ben each added a different motor, so Both is right and picking one deletes a teammate's work. Lesson: talk to your teammate, then decide.</p></aside>
-</section>
-
-<section class="slide t-paper" data-title="Avoiding conflicts">
-  <div class="pad">
-    <div class="eyebrow">Fewer conflicts</div>
-    <h2 class="h1">How to avoid most conflicts</h2>
-    <div class="habits mt3">
-      <div class="habit step"><b>1</b><div><h3>Pull often</h3><p>Start every work session with Sync on <code>main</code>.</p></div></div>
-      <div class="habit step"><b>2</b><div><h3>Small, short branches</h3><p>A day or two of work, then a pull request.</p></div></div>
-      <div class="habit step"><b>3</b><div><h3>One person per file</h3><p>When you can. Split big jobs by mechanism.</p></div></div>
-      <div class="habit step"><b>4</b><div><h3>Say what you're working on</h3><p>Tell the team before you start. Two people fixing the same bug is a conflict waiting to happen.</p></div></div>
-    </div>
-  </div>
-  <aside class="notes"><p>Conflicts still happen and that's fine. These habits just make them small and rare.</p></aside>
-</section>
-
-<section class="slide t-green try" data-title="Try it: make and fix a conflict">
-  <div class="pad">
-    <div class="eyebrow">▶ Try it · 8 min · pairs, two laptops <span class="timer" data-sec="480"></span></div>
-    <h2 class="h1">Make a conflict, then fix it</h2>
-    <div class="row mt3" style="gap:36px;align-items:flex-start">
-      <div class="card grow"><h3>Partner A and Partner B, each on your own laptop:</h3>
-        <ol class="hunt">
-          <li><b>A:</b> from <code>main</code>, create branch <code>pair-N</code> and <b>Publish Branch</b></li>
-          <li><b>B:</b> Sync, click the branch name, pick <code>origin/pair-N</code></li>
-          <li><b>Both:</b> change <code>kIntakeSpeed</code> in <code>Constants.java</code> to <b>different</b> values, then commit</li>
-          <li><b>A:</b> Sync first</li>
-          <li><b>B:</b> Sync. Conflict! Use the Accept buttons, save, stage, commit, Sync</li>
-          <li><b>Swap roles</b> with <code>kShooterSpeed</code></li>
-        </ol></div>
-      <div style="width:560px;flex:none;display:flex;flex-direction:column;gap:24px">
-        <div class="callout note" style="font-size:24px"><span class="lbl">★ Pair up first</span>Find a partner and get your pair number <b>N</b> from the board. Decide who is <b>A</b> and who is <b>B</b>. Each of you opens your own Sandbox clone. Sharing a laptop? Team up with another pair: one laptop is A, the other is B.</div>
-        <div class="callout concept" style="font-size:22px"><span class="lbl">◆ No pull request</span>This branch is just for practice. We never merge it into <code>main</code>.</div>
-        <div class="callout concept" style="font-size:24px"><span class="lbl">◆ Stuck?</span>Read <code>CONFLICT-PRACTICE.md</code> in the Sandbox. It has these steps with pictures.</div>
-      </div>
-    </div>
-  </div>
-  <aside class="notes"><p>Before starting the timer, have everyone pair up and write the pair numbers on the whiteboard (pair-1, pair-2 and so on). A conflict needs two separate clones, so each partner needs their own laptop; students who shared a laptop on the earlier Try-its join up with another pair, one laptop as A and one as B. When B syncs, VS Code pulls A's commit and shows the conflict in Constants.java with the Accept buttons. After resolving: save, stage with +, commit (the message is filled in), Sync. If someone's Sync says "Merge" options, choose the default.</p></aside>
 </section>
 
 <!-- ================= 8 · DRIVER STATION ================= -->
@@ -2899,10 +2900,10 @@ const EXP={
   wpilib:['.wpilib/','Holds <code>wpilib_preferences.json</code>, where our team number <b>245</b> lives. That\'s how VS Code knows which robot is ours.',[['rarely edit','info']]],
   deploy:['src/main/deploy/','Extra files sent to the robot along with the code, like autonomous paths.',[['sometimes','info']]],
   java:['src/main/java/first/robot/','<b>All our code.</b> (2027 projects use the package <code>first.robot</code>; <code>Main.java</code> sits one folder up and you never edit it.) <code>Robot.java</code>, a <code>subsystems</code> folder (one class per subsystem, each a part of the robot) and the OpModes the Driver Station lists. Next session explains OpModes and commands.',[['edit every day','good']]],
-  vendordeps:['vendordeps/','Libraries from other companies, like motor controller makers. Coming up in section 6, right after Gradle.',[['section 6','info']]],
+  vendordeps:['vendordeps/','Libraries from other companies, like motor controller makers. Coming up in section 7, right after Gradle.',[['section 7','info']]],
   gitignore:['.gitignore','A list of files to leave out when we share the project with the team. We\'ll see why in section 5.',[['rarely edit','info'],['section 5','info']]],
-  gradlelater:[null,'One of <b>Gradle\'s</b> files. Gradle is the tool that turns our code into a robot program; we open it up in section 6. Until then, the rule is simple: <b>don\'t edit</b>.',[['never edit','bad'],['section 6','info']]],
-  /* section 6: Gradle's files, after the kitchen */
+  gradlelater:[null,'One of <b>Gradle\'s</b> files. Gradle is the tool that turns our code into a robot program; we open it up in section 7. Until then, the rule is simple: <b>don\'t edit</b>.',[['never edit','bad'],['section 7','info']]],
+  /* section 7: Gradle's files, after the kitchen */
   buildgradle:['build.gradle','<b>The recipe.</b> Which libraries to use and how to package the program. Mentors change it, maybe once a season.',[['don\'t edit','bad']]],
   settings:['settings.gradle','Kitchen settings, like the project\'s name. Leave it alone.',[['never edit','bad']]],
   gradlew:['gradlew','<b>The "start cooking" button.</b> VS Code runs it for you when you Build or Deploy. (<code>gradlew.bat</code> is the Windows version.)',[['never edit','bad']]],
