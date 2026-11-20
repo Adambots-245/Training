@@ -2832,21 +2832,22 @@ public final class ScoringCommands {
     <div class="row mt2" style="gap:36px;align-items:flex-start">
       <div class="card grow"><h3>On your <code>yourname-sensors</code> branch:</h3>
         <ol class="hunt">
-          <li>Add <code>intakeUntilFull()</code> to <code>subsystems/Intake.java</code> (copy it from two slides back)</li>
+          <li>Add <code>intakeUntilFull()</code> to <code>subsystems/Intake.java</code> (it's on the "Writing a command" slide, and in <code>TRY-IT-5.md</code>)</li>
           <li>Add the <code>Buttons.XboxAButton.onTrue(...)</code> line to <code>DriverControl.java</code></li>
           <li>Build, then Simulate</li>
-          <li>Drag the keyboard into joystick slot <b>1</b>, pick <b>Driver Control</b>, enable Teleoperated</li>
-          <li>Press the key for A: the intake output goes to 0.5</li>
-          <li>Flip <b>DIO 0</b>: the command finishes and the motor stops</li>
+          <li><b>Teleoperated</b> → <b>Driver Control</b> → <b>Enable</b>, then click in the simulation window</li>
+          <li>Press <b>Z</b> (the A button): the intake's Throttle goes to 0.5 (Other Devices → PWMMotorController[0])</li>
+          <li>Hardware → DIO: set <b>In[0]</b> to 0 (blocked): the command finishes and the motor stops</li>
           <li>Commit and Publish Branch</li>
         </ol></div>
       <div style="width:520px;flex:none;display:flex;flex-direction:column;gap:20px">
-        <div class="callout note" style="font-size:24px"><span class="lbl">★ Stuck?</span>Steps with pictures are in <code class="ic">TRY-IT-5.md</code> in the Sandbox. Ask a mentor; the finished code goes on the bootcamp site after the session.</div>
-        <div class="callout concept" style="font-size:24px"><span class="lbl">◆ Done early?</span>Make B spit the game piece out: a new command that runs the motor backwards for 1 second (<code class="ic">coroutine.wait(...)</code>).</div>
+        <div class="callout note" style="font-size:22px"><span class="lbl">★ Stuck?</span>Steps with pictures are in <code class="ic">TRY-IT-5.md</code> in the Sandbox. Ask a mentor; the finished code goes on the bootcamp site after the session.</div>
+        <div class="callout try" style="font-size:22px"><span class="lbl">▶ See it in 3D</span>While it simulates, open <code class="ic">localhost:5811</code> in a browser. Click <b>Place game piece</b>, press <b>Z</b>: the piece rides in and the command stops by itself at the beam break.</div>
+        <div class="callout concept" style="font-size:22px"><span class="lbl">◆ Done early?</span>Make B (the <b>X</b> key) spit the game piece out: a new command that runs the motor backwards for 1 second (<code class="ic">coroutine.wait(...)</code>).</div>
       </div>
     </div>
   </div>
-  <aside class="notes"><p>The key mapping for gamepad buttons is shown in the simulation window's keyboard settings. If DIO 0 is already "blocked" when they start, the command ends immediately: a nice live example of a sensor reading the wrong way. Extension: coroutine.wait(Seconds.of(1)) with a negative throttle.</p></aside>
+  <aside class="notes"><p>The keyboard is already in joystick slot 1 (the Sandbox's simgui-ds.json): Z is A, X is B, C is X, V is Y, Q and P are the bumpers. Students must click in the simulation window before keys reach the robot. The 3D visualizer (visualizer/README.md) is served by the simulation at http://localhost:5811/; its Place game piece button lets the beam break trip on its own, so students see intakeUntilFull end without touching DIO 0. Flipping DIO 0 by hand still works either way. If DIO 0 is already "blocked" when they start, the command ends immediately: a nice live example of a sensor reading the wrong way. Extension: coroutine.wait(Seconds.of(1)) with a negative throttle.</p></aside>
 </section>
 
 <!-- ================= 10 · WRAP-UP ================= -->
