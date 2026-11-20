@@ -2279,11 +2279,13 @@ hookLock.set(true);   // power on: the valve opens or the pin pulls back</pre>
     <div class="row mt2" style="gap:36px;align-items:flex-start">
       <div class="grow" style="display:flex;flex-direction:column;gap:14px">
         <div class="code-head"><span>Robot.java</span><span>print the beam break once a second</span></div>
-<pre class="code java brackets" style="font-size:25px">
-private int loops = 0;
+<pre class="code java brackets" style="font-size:23px">
+!!private int loops = 0;
 
 @Override
 public void robotPeriodic() {
+    intake.periodic();
+    shooter.periodic();
     Scheduler.getDefault().run();
 !!    loops++;
 !!    if (loops % 50 == 0) {
@@ -2304,7 +2306,7 @@ public void robotPeriodic() {
         </ol></div>
     </div>
   </div>
-  <aside class="notes"><p>Same loop counter as last session's Try-it, now reading a sensor. robotPeriodic runs even while disabled, so no need to enable. When students flip DIO 0, the printout flips: they've just proven which way the beam break reads, without a robot. Steps are also in TRY-IT-5.md in the Sandbox.</p></aside>
+  <aside class="notes"><p>Same loop counter as last session's Try-it, now reading a sensor. robotPeriodic runs even while disabled, so no need to enable. When students flip DIO 0, the printout flips: they've just proven which way the beam break reads, without a robot. Steps are also in TRY-IT-5.md in the Sandbox.</p><p>The console also shows a line from the 3D visualizer at startup, saying where to open its page. That's expected; it isn't an error.</p></aside>
 </section>
 
 <section class="slide t-gold break-slide" data-title="Break 2" data-nofoot>
